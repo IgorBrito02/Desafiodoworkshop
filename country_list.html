@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Países</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Lista de Países</h1>
+        <a href="{% url 'country_create' %}" class="btn btn-success mb-3">Adicionar Novo País</a>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Capital</th>
+                    <th>População</th>
+                    <th>Região</th>
+                    <th>Sub-região</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for country in countries %}
+                <tr>
+                    <td>{{ country.name }}</td>
+                    <td>{{ country.capital }}</td>
+                    <td>{{ country.population }}</td>
+                    <td>{{ country.region }}</td>
+                    <td>{{ country.subregion }}</td>
+                    <td>
+                        <a href="{% url 'country_update' country.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'country_delete' country.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
