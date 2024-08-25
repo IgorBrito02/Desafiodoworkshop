@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Countries</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todos os Países</h1>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Capital</th>
+                <th>População</th>
+                <th>Fronteiras</th>
+                <th>Bandeira</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+                <tr>
+                    <td>{{ i.translations.por.common }}</td>
+                    <td>{{ i.capital|default:"N/A" }}</td>
+                    <td>{{ i.population }}</td>
+                    <td>
+                        {% if i.borders %}
+                            {{ i.borders|join:", " }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td><img src="{{ i.flags.png }}" height="100" alt="Bandeira de {{ i.translations.por.common }}"></td>
+                </tr>
+             {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

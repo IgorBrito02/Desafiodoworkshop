@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Details</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container mt-4">
+        <p><strong>Nome:</strong> {{ country.name }}</p>
+        <p><strong>Capital:</strong> {{ country.capital }}</p>
+        <p><strong>Population:</strong> {{ country.population }}</p>
+        <p><strong>Region:</strong> {{ country.region }}</p>
+        <p><strong>Subregion:</strong> {{ country.subregion }}</p>
+    </div>
+</body>
+</html>
